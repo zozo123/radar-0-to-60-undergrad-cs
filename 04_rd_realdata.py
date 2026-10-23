@@ -31,7 +31,7 @@ def mag_db(z: np.ndarray) -> np.ndarray:
 def describe_plan(path: Path, frames: int) -> None:
     typer.echo("📡 Step 4: Real range–Doppler processing")
     typer.echo(
-        "  • We'll open the SiMeRAD60 HDF5 file (TI AWR6843ISK demo) and auto-locate RD datasets."
+        "  • We'll open the SyMeRAD60 HDF5 file (TI AWR6843ISK demo) and auto-locate RD datasets."
     )
     typer.echo(
         f"  • The script plots {frames} consecutive heatmaps, applies a simple 2-D CA-CFAR, and overlays detections."
@@ -148,7 +148,7 @@ def cfar2d_db(
 
 @app.command()
 def main(
-    path: Path = typer.Option(DATA_PATH, help="Path to the SiMeRAD60 HDF5 file."),
+    path: Path = typer.Option(DATA_PATH, help="Path to the SyMeRAD60 HDF5 file."),
     frames: int = typer.Option(3, help="Number of consecutive RD frames to visualise."),
     guard: Tuple[int, int] = typer.Option(
         (2, 2), help="(Doppler, range) guard cells for 2-D CA-CFAR."

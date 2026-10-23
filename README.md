@@ -2,6 +2,8 @@
 
 > Zero-to-sixty radar processing primer for Python-only undergrads (CLI + VS Code + internet, no hardware, no admin rights).
 
+By [Yossi Eliaz](https://yossieliaz.netlify.app/) · more at [zozo123.github.io](https://zozo123.github.io/)
+
 ## What You'll Need
 
 - A Mac, Windows, or Linux machine with command-line access and ~2 GB of free disk space (the real radar dataset is ~500 MB).
@@ -33,7 +35,7 @@ Install [uv](https://docs.astral.sh/uv/) once per workstation.
 Project bootstrap:
 
 ```bash
-mkdir radar-zero-to-60 && cd radar-zero-to-60
+git clone https://github.com/zozo123/radar-0-to-60-undergrad-cs.git && cd radar-0-to-60-undergrad-cs
 uv python install 3.12 --default
 uv venv
 uv pip install numpy scipy matplotlib h5py sigmf typer
@@ -41,7 +43,7 @@ uv pip install numpy scipy matplotlib h5py sigmf typer
 
 Open the folder in VS Code and pick the `.venv` interpreter (`Python: Select Interpreter`).
 
-> `uv run <command>` executes inside the project environment; `uv pip` installs packages at lightning speed.
+> `uv run <command>` executes inside the project environment; `uv pip` installs packages quickly.
 
 Every tutorial script uses [Typer](https://typer.tiangolo.com/) for a friendly CLI. Run `uv run python <script>.py --help` to see adjustable parameters; the scripts narrate what each processing stage means so an FFT newcomer can follow along.
 
@@ -123,11 +125,11 @@ Every tutorial script uses [Typer](https://typer.tiangolo.com/) for a friendly C
 
 ---
 
-## Step 4 — Real Range–Doppler (SiMeRAD60) + 2-D CA-CFAR — ~2.5 h
+## Step 4 — Real Range–Doppler (SyMeRAD60) + 2-D CA-CFAR — ~2.5 h
 
 - **Purpose:** Work with measured range–Doppler (RD) frames, visualize them, and overlay 2-D CFAR detections.
 - **Tasks:**
-  1. Download the SiMeRAD60 HDF5 dataset (TI AWR6843ISK, CC BY 4.0).
+  1. Download the SyMeRAD60 HDF5 dataset (TI AWR6843ISK, CC BY 4.0).
   2. Auto-discover an RD dataset within the file.
   3. Plot three RD frames in dB.
   4. Run a simple 2-D CA-CFAR (rectangular training ring) and overlay detections.
@@ -173,7 +175,7 @@ Reflection prompts:
 ## Folder Layout
 
 ```
-radar-zero-to-60/
+radar-0-to-60-undergrad-cs/
   data/
   01_fft_basics.py
   02_iq_ops.py
@@ -223,7 +225,7 @@ uvx ruff format
 
 ---
 
-## Glossary (15 core terms)
+## Glossary
 
 - **Aliasing:** High-frequency content folding into lower frequencies when sampling too slowly.
 - **IQ / complex baseband:** Complex samples (I + jQ) after mixing RF to baseband; enables clean shifts and filtering.
@@ -266,7 +268,7 @@ A learner at “60% ready” can:
 - SciPy STFT — https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.stft.html
 - TI mmWave fundamentals & FAQ — https://www.ti.com/lit/pdf/sszt906 and https://e2e.ti.com/support/sensors-group/sensors/f/sensors-forum/1050220/faq-computing-maximum-range-velocity-and-resolution-mmwave-system
 - FM/RDS IQ capture — https://github.com/777arc/498x/blob/master/fm_rds_250k_1Msamples.iq
-- SiMeRAD60 dataset (Zenodo) — https://zenodo.org/records/14916564
+- SyMeRAD60 dataset (Zenodo, Philipp Reitz & Christian Künzle, CC BY 4.0) — https://zenodo.org/records/14916564
 - h5py quick-start — https://docs.h5py.org/en/stable/quick.html
 - SigMF docs — https://sigmf.readthedocs.io/en/latest/
 
